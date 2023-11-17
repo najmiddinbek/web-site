@@ -44,9 +44,9 @@ const Filter = () => {
 
     const getRowBackgroundColor = (index) => {
         if (index % 2 === 0) {
-            return "bg-white"; // Set green background for every third row
+            return "bg-white";
         } else if (index % 2 === 1) {
-            return "gray"; // Set red background for every second row
+            return "gray";
         }
     };
 
