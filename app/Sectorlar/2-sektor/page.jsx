@@ -64,6 +64,7 @@ const Filter = () => {
         }
     };
 
+
     return (
         <div>
             <Navbar />
@@ -95,13 +96,13 @@ const Filter = () => {
                     {hide ? (
                         <div className=''>
                             <div className=''>
-                                <div className='flex items-center gap-3'>
-                                    <input className='border-2 py-[11px] px-2 w-full' placeholder='FIO' type="text" value={filterValue.newSinfi} onChange={(e) => setFilterValue({ ...filterValue, newSinfi: e.target.value })} />
-                                    <button className='green text-white py-3 px-10 button ' onClick={handleFilter}>Izlash</button>
-                                </div>
 
                                 <div className='flex items-center gap-3 my-3'>
-                                    <input className='border-2 py-[11px] px-2 w-full' placeholder='Sinfni yozing' type="text" value={filterValue.newIsm} onChange={(e) => setFilterValue({ ...filterValue, newIsm: e.target.value })} />
+                                    <input className='border-2 py-[11px] px-2 w-full' placeholder='FIO' type="text" value={filterValue.newIsm} onChange={(e) => setFilterValue({ ...filterValue, newIsm: e.target.value })} />
+                                    <button className='green text-white py-3 px-10 button ' onClick={handleFilter}>Izlash</button>
+                                </div>
+                                <div className='flex items-center gap-3'>
+                                    <input className='border-2 py-[11px] px-2 w-full mb-2' placeholder='Sinfni yozing' type="text" value={filterValue.newSinfi} onChange={(e) => setFilterValue({ ...filterValue, newSinfi: e.target.value })} />
                                     <button className='green text-white py-3 px-10 button ' onClick={handleFilter}>Izlash</button>
                                 </div>
 

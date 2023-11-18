@@ -133,7 +133,7 @@ const Filter = () => {
                                 <td className="px-2 py-4 admin_panel_td">{t.telephoneRaqami}</td>
                                 <td className="px-2 py-4 admin_panel_td">{t.school}-maktab</td>
                                 <td className='admin_panel_td'>{t.newSinfi}-sinf</td>
-                                <td className="px-2 py-4 admin_panel_td">{t.adress}</td>
+                                <td className="px-2 py-4 admin_panel_td">{t.manzili}</td>
                                 <td className="px-2 py-4 admin_panel_td">{t.MFY}</td>
                                 <td className="px-2 py-4 admin_panel_td">{new Date(t.createdAt).toLocaleString()}</td>
                                 <td className="px-2 py-4 admin_panel_td">{t.newDarsQoldirish}</td>
