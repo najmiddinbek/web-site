@@ -322,7 +322,7 @@ export default function LoginForm() {
       return;
     }
 
-    if (email === "Toxtasinov Islomjon" && password === "islomjon08") {
+    if (email === "Islomjon" && password === "islomjon08") {
       router.replace("/pupilsAdd");
       toast.success(`Xush kelibsiz ${email}`, {
         position: "top-right",
