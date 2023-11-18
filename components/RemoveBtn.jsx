@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 export default function RemoveBtn({ id }) {
     const router = useRouter();
     const removeTopic = async () => {
-        const confirmed = confirm("Are you sure?");
+        const confirmed = confirm("O`quvchini bazadan o`chirib tashlamoqchimisiz?");
 
         if (confirmed) {
             const res = await fetch(`/api/topics?id=${id}`, {

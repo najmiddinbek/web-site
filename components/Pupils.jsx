@@ -113,7 +113,7 @@ const PupilsAddClient = () => {
                     ))}
                 </select>
 
-                {school === "3" && (
+                {school !== "" && (
                     <>
                         <label className="text-[20px] font-bold poppins -mb-3" htmlFor="">
                             Sinfni tanlang
@@ -148,20 +148,31 @@ const PupilsAddClient = () => {
                             <option>Sababli</option>
                         </select>
 
-
-
-                        <div className="flex justify-end">
-                            <button
-                                type="submit"
-                                className="green cursor-pointer rounded-md font-bold text-white py-3 px-6 w-fit"
-                            >
-                                Qo`shish
-                            </button>
-                        </div>
+                        {newDarsQoldirish === "" && (
+                            <div className="flex justify-end">
+                                <button
+                                    type="submit"
+                                    disabled={newDarsQoldirish === ""}
+                                    className="bg-white border-2 cursor-no-drop rounded-md font-bold text-gray-200 py-3 px-6 w-fit"
+                                >
+                                    Qo`shish
+                                </button>
+                            </div>
+                        )}
+                        {newDarsQoldirish !== "" && (
+                            <div className="flex justify-end">
+                                <button
+                                    type="submit"
+                                    className="green border-2 cursor-pointer rounded-md font-bold text-gray-200 py-3 px-6 w-fit"
+                                >
+                                    Qo`shish
+                                </button>
+                            </div>
+                        )}
 
                     </>
                 )}
-                {school !== "3" && (
+                {school === "" && (
                     <>
                         <label className="text-[18px] font-bold poppins" htmlFor="">
                             Sinfni tanlang
@@ -185,7 +196,7 @@ const PupilsAddClient = () => {
                         <div className="flex justify-end">
                             <button
                                 type="submit"
-                                disabled={newSinfi === ""}
+                                disabled={school !== "3"}
                                 className="bg-white border-2 cursor-no-drop rounded-md font-bold text-gray-200 py-3 px-6 w-fit"
                             >
                                 Qo`shish
@@ -193,9 +204,10 @@ const PupilsAddClient = () => {
                         </div>
                     </>
                 )}
-                <div className='flex gap-1 pb-5 justify-center items-center'>
-                    <h1 className='text-center text-[16px] poppins'>Web Sayt Chortoq IT Park jamoasi tomonidan tuzildi</h1>
-                    <Image src={ITLOGO} alt='Image' width={50} height={10} />
+                <div className='anons flex gap-1 mt-10 justify-center'>
+                    <h1 className='text-center text-[16px] poppins'>Web Sayt Chortoq IT Park jamoasi tomonidan tuzildi
+                        <Link href={"https://t.me/Sarvarr_dev"}> Murojaat uchun</Link></h1>
+                    <Image src={ITLOGO} className='flex justify-center' alt='Image' width={50} height={10} />
                 </div>
             </form >
         </>

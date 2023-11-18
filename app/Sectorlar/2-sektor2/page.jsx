@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { BsChevronDown, BsChevronUp } from "react-icons/bs"
 import Link from "next/link"
 import Navbar from '../../../components/Navbar';
-import Home from '../../../components/Home';
+import { useRouter } from 'next/navigation';
 
 const getTopics = async () => {
     try {
@@ -28,6 +28,8 @@ const Filter = () => {
     const [filterValue, setFilterValue] = useState({ newIsm: "", newSinfi: "", school: "" });
     const [hide, setHide] = useState(false)
     const [button, setButton] = useState(false)
+
+    const router = useRouter();
 
     const handleHide = () => {
         setHide(!hide)
@@ -77,7 +79,6 @@ const Filter = () => {
             <Navbar />
             <div className="container">
                 <div className=''>
-                    <Link href={"/Sectorlar/newPupils"}>Bugungi qoshilganlar</Link>
                     <div className="admin_panel_main_div flex justify-between w-full mb-8 items-center">
                         <div>
                             <h1 className='admin_panel_text text-4xl mt-3 mb-3 font-bold poppins'>Darsga qatnashmagan o`quvchilar</h1>
@@ -152,7 +153,6 @@ const Filter = () => {
                                 <td className="px-2 py-4 admin_panel_td">{t.manzili}</td>
                                 <td className="px-2 py-4 admin_panel_td">{new Date(t.createdAt).toLocaleString()}</td>
                                 <td className="px-2 py-4 admin_panel_td">{t.newDarsQoldirish}</td>
-                                <Home />
                             </tr>
                         </tbody>
                     ))
