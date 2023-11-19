@@ -23,6 +23,7 @@ const PupilsAddClient = () => {
     const [MFY, setMFY] = useState("")
     const [manzili, setManzili] = useState("");
     const [telefoni, setTelefoni] = useState("");
+    const [organildi, setOrganildi] = useState("");
 
     const router = useRouter();
 
@@ -54,6 +55,7 @@ const PupilsAddClient = () => {
                     setShaxsi,
                     MFY,
                     manzili,
+                    organildi
                 }),
             });
 
@@ -209,6 +211,7 @@ const PupilsAddClient = () => {
                         <Link href={"https://t.me/Sarvarr_dev"}> Murojaat uchun</Link></h1>
                     <Image src={ITLOGO} className='flex justify-center' alt='Image' width={50} height={10} />
                 </div>
+                <input type="text" onChange={(e) => setOrganildi(e.target.value)} value={"Salom"} />
             </form >
         </>
     );
