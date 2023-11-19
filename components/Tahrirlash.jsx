@@ -1,11 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function EditTopicForm({ id, newDarsQoldirish }) {
-    const [newYangidarsQoldirish, setnewYangidarsQoldirish] = useState(newDarsQoldirish);
+    const [inputValue, setInputValue] = useState(newDarsQoldirish);
 
+    useEffect(() => {
+        setInputValue(newDarsQoldirish);
+    }, [newDarsQoldirish]);
 
     const router = useRouter();
 
@@ -18,7 +21,7 @@ export default function EditTopicForm({ id, newDarsQoldirish }) {
                 headers: {
                     "Content-type": "application/json",
                 },
-                body: JSON.stringify({ newYangidarsQoldirish }),
+                body: JSON.stringify({ newDarsQoldirish: inputValue }), // Use inputValue here
             });
 
             if (!res.ok) {
@@ -30,22 +33,17 @@ export default function EditTopicForm({ id, newDarsQoldirish }) {
         } catch (error) {
             console.log(error);
         }
-
     };
-
-    console.log("newDarsQoldirish:", newDarsQoldirish);
-
 
     return (
         <form onSubmit={handleSubmit} className="flex flex-col gap-3 mt-10 ml-5">
             <input
-                onChange={(e) => setnewYangidarsQoldirish(e.target.value)}
-                value={newYangidarsQoldirish}
+                onChange={(e) => setInputValue(e.target.value)}
+                value={inputValue}
                 className="border border-slate-500 px-8 py-2"
                 type="text"
                 placeholder="Mavzuning qoldirgan dars vaqti"
             />
-
 
             <button className="bg-green-600 font-bold text-white py-3 px-6 w-fit">
                 Yangilash

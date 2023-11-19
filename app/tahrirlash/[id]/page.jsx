@@ -26,8 +26,7 @@ export default async function EditTopic({ params }) {
     const { id } = params;
     const { topiclar } = await getTopicById(id);
 
-    const { newDarsQoldirish } = topiclar || {};
+    const { newDardQoldirish } = topiclar || {};
 
-    return <EditTopicForm id={id} newDarsQoldirish={newDarsQoldirish} />
-        ;
+    return <EditTopicForm id={id} newDardQoldirish={newDardQoldirish} />
 }

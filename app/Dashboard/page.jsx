@@ -180,8 +180,6 @@ const Filter = () => {
             }, {});
 
             setUsersAddedByDate(usersGroupedByDate);
-
-            // Update chart data
             setChartData({
                 labels: Object.keys(usersAddedByDate),
                 datasets: [
@@ -200,28 +198,11 @@ const Filter = () => {
     }, [filteredMavzula]);
 
 
-
-    const getRowBackgroundColor = (index) => {
-        if (index % 2 === 0) {
-            return "bg-white";
-        } else if (index % 2 === 1) {
-            return "gray";
-        }
-    };
-
-
     return (
         <>
             <div>
                 <Navbar />
                 <div className="container">
-                    <div className="mb-4">
-                        <h2 className="text-xl font-bold mb-2">Sanalik kiritilgan o'quvchilar</h2>
-                        {Object.keys(usersAddedByDate).map((date) => (
-                            <p key={date}>{date}: {usersAddedByDate[date]} ta</p>
-                        ))}
-                    </div>
-
                     <div className="mb-4">
                         <h2 className="text-xl font-bold mb-2">Foizdagi o'zgarish</h2>
                         {Object.keys(percentageIncreaseByDate).map((date) => (

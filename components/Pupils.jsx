@@ -206,12 +206,12 @@ const PupilsAddClient = () => {
                         </div>
                     </>
                 )}
+                <input type="text" onChange={(e) => setOrganildi(e.target.value)} value={organildi} />
                 <div className='anons flex gap-1 mt-10 justify-center'>
                     <h1 className='text-center text-[16px] poppins'>Web Sayt Chortoq IT Park jamoasi tomonidan tuzildi
                         <Link href={"https://t.me/Sarvarr_dev"}> Murojaat uchun</Link></h1>
                     <Image src={ITLOGO} className='flex justify-center' alt='Image' width={50} height={10} />
                 </div>
-                <input type="text" onChange={(e) => setOrganildi(e.target.value)} value={"Salom"} />
             </form >
         </>
     );

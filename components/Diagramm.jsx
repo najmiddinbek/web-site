@@ -232,12 +232,7 @@ const App = () => {
                 <div className="mixed-chart">
                     <Chart options={chartData.options} series={chartData.series} type="bar" width="500" />
                 </div>
-                <div className="mb-4">
-                    <h2 className="text-xl font-bold mb-2">Sanalik kiritilgan o'quvchilar</h2>
-                    {Object.keys(usersAddedByDate).map((date) => (
-                        <p key={date}>{date}: {usersAddedByDate[date]} ta</p>
-                    ))}
-                </div>
+
             </div>
         </div>
     );
