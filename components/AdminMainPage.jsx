@@ -112,9 +112,12 @@ export default function AdminMainPage() {
         <div className='admin_main_page_some_padding mt-10 max-w-[1400px] ml-auto mr-auto'>
             <div data-aos="fade-down" className="flex justify-between mb-3 main_panel">
                 <h1 className='page_text poppins text-3xl mb-4 font-bold'>Barcha MFY inspektorlari </h1>
-                <Link href={"/"} className="green asosiy_button py-3 px-10 button text-white rounded-md">
-                    Orqaga
-                </Link>
+                <div className="flex items-center gap-2 ">
+                    <Link href={"/Dashboard"} className='green asosiy_button py-3 px-10 button text-white rounded-md'>Dashboard</Link>
+                    <Link href={"/"} className="green asosiy_button py-3 px-10 button text-white rounded-md">
+                        Orqaga
+                    </Link>
+                </div>
             </div>
             <Link href={"/Logins/Login1"}>
                 <div data-aos="fade-up" className='max-w-[1400px] mx-auto w-full shadow-md p-3 bg-white rounded-md flex justify-between items-center h-full mb-3'>

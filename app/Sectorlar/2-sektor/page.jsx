@@ -5,6 +5,7 @@ import { BsChevronDown, BsChevronUp } from "react-icons/bs"
 import Link from "next/link"
 import Navbar from '../../../components/Navbar';
 import RemoveBtn from '../../../components/RemoveBtn';
+import { HiPencilAlt } from "react-icons/hi";
 
 const getTopics = async () => {
     try {
@@ -46,6 +47,23 @@ const Filter = () => {
         fetchData();
     }, []);
 
+    const [usersAddedByDate, setUsersAddedByDate] = useState({});
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const usersGroupedByDate = filteredMavzula.reduce((acc, t) => {
+                const dateKey = new Date(t.createdAt).toLocaleDateString();
+                acc[dateKey] = (acc[dateKey] || []);
+                acc[dateKey].push(t);
+                return acc;
+            }, {});
+
+            setUsersAddedByDate(usersGroupedByDate);
+        };
+
+        fetchData();
+    }, [filteredMavzula]);
+
     const handleFilter = () => {
         const filteredArray = topiclar.filter((t) =>
             t.newIsm.toLowerCase().includes(filterValue.newIsm.toLowerCase()) &&
@@ -74,6 +92,7 @@ const Filter = () => {
                         <div>
                             <h1 className='admin_panel_text text-4xl mt-3 mb-3 font-bold poppins'>Darsga qatnashmagan o`quvchilar</h1>
                         </div>
+                        {/* <Link href={"/newPupils"}>Bugungi kiritilgan o`quvchilar</Link> */}
                         <div className='flex gap-3 items-center katta_main_div_edi'>
                             <div onClick={handleHide} className='main_div_edi  cursor-pointer flex items-center gap-5 font-bold'>
                                 <h1 className='poppins text-2xl'>Filtrlash:</h1>
@@ -117,41 +136,50 @@ const Filter = () => {
 
 
                 </div>
-                <table className="main_table w-full shadow-xl">
-                    <thead className="green text-white font-bold poppins-2">
-                        <tr>
-                            <th className="admin_panel_th admin_panel-tih py-5 px-2 poppins-2">№</th>
-                            <th className="admin_panel_th py-4 px-2 poppins-2">Ism</th>
-                            <th className="admin_panel_th py-4 px-2 poppins-2">Telefon raqami</th>
-                            <th className="admin_panel_th py-4 px-2 poppins-2">Maktab</th>
-                            <th className="admin_panel_th py-4 px-2 poppins-2">Sinf</th>
-                            <th className="admin_panel_th py-4 px-2 poppins-2">Sektor</th>
-                            <th className="admin_panel_th py-4 px-2 poppins-2">Yashash manzili</th>
-                            <th className="admin_panel_th py-4 px-2 poppins-2">Kiritilgan vaqti</th>
-                            <th className="admin_panel_th py-4 px-2 poppins-2">Qoldirgan dars vaqti</th>
-                            <th className="admin_panel_th py-4 px-2 poppins-2"></th>
-                        </tr>
-                    </thead>
-                    {filteredMavzula.map((t, index) => (
-                        <tbody key={t.id} className="text-center w-full">
-                            <tr className={`${getRowBackgroundColor(index)} w-full`}>
-                                <td className="px-2 py-4 admin_panel_td admin_panel-tih admin_panel_index ">{index + 1}</td>
-                                <td className="px-2 py-4 admin_panel_td">{t.newIsm}</td>
-                                <td className="px-2 py-4 admin_panel_td">{t.telephoneRaqami}</td>
-                                <td className="px-2 py-4 admin_panel_td">{t.school}</td>
-                                <td className='admin_panel_td'>{t.newSinfi}</td>
-                                <td className="px-2 py-4 admin_panel_td">{t.MFY}</td>
-                                <td className="px-2 py-4 admin_panel_td">{t.manzili}</td>
-                                <td className="px-2 py-4 admin_panel_td">{new Date(t.createdAt).toLocaleString()}</td>
-                                <td className="px-2 py-4 admin_panel_td">{t.newDarsQoldirish}</td>
-                                <td>
-                                    <RemoveBtn id={t._id} />
-                                </td>
-                            </tr>
-                        </tbody>
-                    ))
-                    }
-                </table>
+                <div className="mb-4">
+                    {Object.keys(usersAddedByDate).map((date) => (
+                        <div key={date}>
+                            <h3 className='text-2xl font-bold poppins mb-5 mt-10'>{date} sanasida kiritilgan o'quvchilar:</h3>
+                            <table className="main_table w-full shadow-xl">
+                                <thead className="green text-white font-bold poppins-2">
+                                    <tr>
+                                        <th className="admin_panel_th admin_panel-tih py-5 px-2 poppins-2">№</th>
+                                        <th className="admin_panel_th py-4 px-2 poppins-2">Ism</th>
+                                        <th className="admin_panel_th py-4 px-2 poppins-2">Telefon raqami</th>
+                                        <th className="admin_panel_th py-4 px-2 poppins-2">Maktab</th>
+                                        <th className="admin_panel_th py-4 px-2 poppins-2">Sinf</th>
+                                        <th className="admin_panel_th py-4 px-2 poppins-2">Sektor</th>
+                                        <th className="admin_panel_th py-4 px-2 poppins-2">Yashash manzili</th>
+                                        <th className="admin_panel_th py-4 px-2 poppins-2">Kiritilgan vaqti</th>
+                                        <th className="admin_panel_th py-4 px-2 poppins-2">Qoldirgan dars vaqti</th>
+                                        <th className="admin_panel_th py-4 px-2 poppins-2"></th>
+                                    </tr>
+                                </thead>
+                                {usersAddedByDate[date].map((t, index) => (
+                                    <tbody key={t.id} className="text-center w-full">
+                                        <tr className={`${getRowBackgroundColor(index)} w-full`}>
+                                            <td className="px-2 py-4 admin_panel_td admin_panel-tih admin_panel_index ">{index + 1}</td>
+                                            <td className="px-2 py-4 admin_panel_td">{t.newIsm}</td>
+                                            <td className="px-2 py-4 admin_panel_td">{t.telephoneRaqami}</td>
+                                            <td className="px-2 py-4 admin_panel_td">{t.school}</td>
+                                            <td className='admin_panel_td'>{t.newSinfi}</td>
+                                            <td className="px-2 py-4 admin_panel_td">{t.MFY}</td>
+                                            <td className="px-2 py-4 admin_panel_td">{t.manzili}</td>
+                                            <td className="px-2 py-4 admin_panel_td">{new Date(t.createdAt).toLocaleString()}</td>
+                                            <td className="px-2 py-4 admin_panel_td">{t.newDarsQoldirish}</td>
+                                            <td className=''>
+                                                <RemoveBtn id={t._id} />
+                                                <Link href={`/tahrirlash/${t._id}`}>
+                                                    <HiPencilAlt size={24} />
+                                                </Link>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                ))}
+                            </table>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

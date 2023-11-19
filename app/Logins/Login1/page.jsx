@@ -11,7 +11,7 @@ export default function Page() {
         const inputValue = event.target.value;
 
         if (inputValue === 'chortoq1111') {
-            history.push('/Sectorlar/4-sektor');
+            history.push('/Sectorlar/1-sektor');
         }
     };
 
